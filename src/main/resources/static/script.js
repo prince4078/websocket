@@ -17,13 +17,14 @@ function connect(){
 }
 function showMessage(message) {
     $("#message-container-table")
-        .prepend(`<tr><td><b>${message.name}:</b> ${message.content}</td></tr>`);
+        .prepend(`<tr><td><b>${message.name}:</b> ${message.content}  ${message.amount}</td></tr>`);
 }
 
 function sendMessage(){
 	let jsonOb={
 		name:localStorage.getItem("name"),
-		content:$("#message-value").val()
+		content:$("#message-value").val(),
+		amount:$("#amount-value").val()
 	}
 	stompClient.send("/app/message",{},JSON.stringify(jsonOb));
 }
